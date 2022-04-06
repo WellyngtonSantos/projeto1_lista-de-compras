@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./carrinho.png" type="image/x-icon">
     <title>Lista de compras</title>
-
-    <link rel="stylesheet" href="style.css">    
-    <script src="script.js" defer></script>
-
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
 </head>
 <body>
 
-    <h1 id="titulo">Lista de compras</h1>
-    <p id="subtitulo">Insira um item na lista:</p>
-    <label for="campo-item"></label>
-    <input 
-        type="text" 
-        name="produto" 
-        id="produto" 
-        placeholder="Digite o nome do produto">
-    <button 
-        id="adicionaProduto" 
-        >Salvar</button>
-    <ul 
-        id="listaProdutos">
-    </ul>
+    <div id="cabecalho">
+        <h1  id="header">Inserir itens na lista:</h1>
+        <input type="text" id="produto" placeholder="Digite o produto">
+        <button onclick="salvarProduto()" id="salvar">Salvar</button>
+    </div>
+
+    <div class="conteudo">        
+        <div id="listaGeral">
+            <ul>
+                <input type="checkbox" name="checkbox" id="checkbox">
+            </ul>
+        <ul 
+            id="listaProdutos">
+        </ul>
+        </div>
+    </div>
 </body>
 </html>
