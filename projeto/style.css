@@ -28,7 +28,9 @@ body {
 }
 
 #listaProdutos li{    
-    background-color: black;
+    background-color: #2b2a2a;
+    border-style:groove;
+    border-color: black;
     color: white;
     margin-top: 20px;    
     padding: 20px;
