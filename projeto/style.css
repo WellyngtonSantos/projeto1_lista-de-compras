@@ -28,9 +28,7 @@ body {
 }
 
 #listaProdutos li{    
-    background-color: #2b2a2a;
-    border-style:groove;
-    border-color: black;
+    background-color: #1f1f1f;
     color: white;
     margin-top: 20px;    
     padding: 20px;
@@ -40,6 +38,16 @@ body {
 #salvar {
     cursor: pointer;
     width: 120px;
+    height: 40px;
+    border-radius: 15px;
+    background-color: white;
+    color: black;
+    font-size: 1.3rem;
+}
+
+#deleteAll {
+    cursor: pointer;
+    width: 140px;
     height: 40px;
     border-radius: 15px;
     background-color: white;
