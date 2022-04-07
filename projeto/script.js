@@ -6,8 +6,8 @@ function salvarProduto(){
 
   listaProdutos += "<li>" + checkbox +dadoProduto+ "</li>"
   document.getElementById("listaProdutos").innerHTML = listaProdutos;
-  updateScreen();
-  //limpaCampo();
+  validaCampos();
+  limpaCampo();
   
   console.log(dados);
 }
