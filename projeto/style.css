@@ -43,6 +43,8 @@ body {
     background-color: white;
     color: black;
     font-size: 1.3rem;
+    margin: 10px;
+    margin-left: 30%;
 }
 
 #deleteAll {
@@ -53,13 +55,16 @@ body {
     background-color: white;
     color: black;
     font-size: 1.3rem;
+    margin: 10px;
+    margin-left: 25%;
 }
 
 #produto {
     height: 35px;
     width: 100%;
-    max-width: 60%;
     border-radius: 15px;
+    margin: 10px;
+    margin-left: 20px;
     text-align: center;
     background-color: white;
     color: black;
@@ -70,15 +75,23 @@ body {
 .conteudo {
     margin: 50px;
     width: 100%;
-    max-width: 70%;
+    max-width: 50%;
     margin-top: 50px;
     margin-bottom: 50px;
     background: #2b2a2a;
     padding: 55px;
     border-radius: 12px;
-    
 }
 
 #cabecalho {
-    padding: 50px;
+    padding: 0px;
+    width: 50%;
+}
+
+.line-through {
+    text-decoration: line-through;
+}
+
+#corpo {
+    display: flex;
 }

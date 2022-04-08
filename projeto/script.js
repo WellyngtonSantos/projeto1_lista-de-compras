@@ -1,70 +1,99 @@
+const texto = document.querySelector('input')
+const ul = document.querySelector('ul')
+const btnDeleteAll = document.querySelector('.header button')
+const btnInsert = document.querySelector('.divInsert button')
 
-//função principal que é chamada pelo botão Salvar
-function salvarProduto(){
+var itensDB = []
 
-  //variáveis de base para o script
-  let dadoProduto = document.getElementById('produto').value;
-  let listaProdutos = document.getElementById("listaProdutos").innerHTML;
-  let checkbox = document.getElementById("checkbox").checked;
-  let dados = [checkbox, dadoProduto];
+texto.addEventListener('keypress', e => {
+  if (e.key == 'Enter' && texto.value != '') {
+    setItemDB()
+  }
+})
 
-  //adiciona os itens na lista
-  listaProdutos += "<li>" + checkbox +dadoProduto+ "</li>"
-  document.getElementById("listaProdutos").innerHTML = listaProdutos;
-
-  //chama função de validação e limpa o campo do input
-  validaCampos();
-  limpaCampo();
-  
-  //apenas para acompanhamento dos dados via console
-  console.log(dados);
-}
-
-//função para apagar o campo input automáticamente ao salvar
-function limpaCampo(){
-  document.getElementById('produto').value = '';
-}
-
-//função para limpar a lista inteira
-function apagarLista(){
-  document.getElementById('listaProdutos').innerHTML = '';
-}
-
-//função para validar se o campo do input não está vazio (NÃO ESTÁ FUNCIONANDO, POIS ADICIONA O ITEM DA MESMA FORMA APÓS O ALERT)
-function validaCampos(){
-  if (document.getElementById('produto').value === ""){
-      alert("Informe um produto");
-      return false;
-  }else{
-      document.getElementById('produto').focus;
-      
+//evento do botão de inserir o item
+btnInsert.onclick = () => {
+  if (texto.value != '') {
+    setItemDB()
   }
 }
 
+//fazer o push do valor do item
+function setItemDB() {
+  if (itensDB.length >= 20) {
+    alert('Limite máximo de 20 itens atingido!')
+    return
+  }
 
-//essa parte abaixo eu tentei reaproveitar de um material anterior, 
-//mas não consegui encaixar para funcionar com meu código
+  itensDB.push({ 'item': texto.value, 'status': '' })
+  updateDB()
+}
 
+//lança o item dentro do localStorage como todolist e passa o itensDB pra JSON.stringfy,
+//aí depois que colocar no localStorage, chama uma função pra carregar os itens
+function updateDB() {
+  localStorage.setItem('todolist', JSON.stringify(itensDB))
+  loadItens()
+}
 
-// funcao de atualizar a tela
-function updateScreen() {
-  // limpa o interior do elemento ul
-  //listaProdutos.innerHTML = '';
-  // itera entre todos itens da lista
-  listaProdutos.forEach(function (item) {
-    // cria botao de remocao e define evento
-    const btn = document.createElement('button');
-    btn.innerHTML = 'x';
-    btn.onclick = function () {
-      // remove a partir da id
-      removeItem(item.id);
-    }
-    // cria o elemento li e acrescenta nome e botão
-    const li = document.createElement('li');
-    li.id = `i${item.id}`;
-    li.innerHTML = item.name;
-    li.appendChild(btn);
-    // acrescenta li na ul
-    ul.appendChild(li);
-  });
+//limpa a ul pra não duplicar registros
+//busca os itens com um forEach
+//cria uma função pra inserir os itens na tela
+function loadItens() {
+  ul.innerHTML = "";
+  itensDB = JSON.parse(localStorage.getItem('todolist')) ?? []
+  itensDB.forEach((item, i) => {
+    insertItemTela(item.item, item.status, i)
+  })
+}
+
+//cria a li com o document.createElement pra poder criar a checkbox e atribuir o status do item
+//cria um if pra a classe que vai riscar o item ou não
+function insertItemTela(text, status, i) {
+  const li = document.createElement('li')
+  
+  li.innerHTML = `
+    <div class="divLi">
+      <input type="checkbox" ${status} data-i=${i} onchange="done(this, ${i});" />
+      <span data-si=${i}>${text}</span>
+      <button onclick="removeItem(${i})" data-i=${i}><class='excluir'>X</i></button>
+    </div>
+    `
+  ul.appendChild(li)
+
+  if (status) {
+    document.querySelector(`[data-si="${i}"]`).classList.add('line-through')
+  } else {
+    document.querySelector(`[data-si="${i}"]`).classList.remove('line-through')
+  }
+
+  texto.value = ''
+}
+
+//função done da checkbox pra quando marcar como realizado ele atribuir o status de checado
+//chama a função updateDB pra atualizar
+function done(chk, i) {
+
+  if (chk.checked) {
+    itensDB[i].status = 'checked' 
+  } else {
+    itensDB[i].status = '' 
+  }
+
+  updateDB()
+}
+
+//cria a função para remover 1 item
+//chama o loadItens pra atualizar a tela
+function removeItem(i) {
+  itensDB.splice(i, 1)
+  updateDB()
+}
+
+loadItens();
+
+//cria o delete all pra deletar todos os itens
+btnDeleteAll.onclick = () => {
+  itensDB = []
+  updateDB()
 }

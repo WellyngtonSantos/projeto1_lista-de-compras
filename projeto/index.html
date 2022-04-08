@@ -10,19 +10,23 @@
     <script src="./script.js" defer></script>
 </head>
 <body>
-
+    <h1  id="header">Inserir itens na lista:</h1>
+    <div id="corpo">
     <div id="cabecalho">
-        <h1  id="header">Inserir itens na lista:</h1>
+        
         <input type="text" id="produto" placeholder="Digite o nome do produto" >
+        
+    </div>    
+    <div class="divInsert">
         <button onclick="salvarProduto()" id="salvar"><strong>Salvar</strong></button>
-        <button onclick="apagarLista()" id="deleteAll"><strong>Limpar lista</strong></button>
     </div>
-
-    <div class="conteudo">        
+    <div class="header">
+        <button  class="excluir" onclick="apagarLista()" id="deleteAll"><strong>Limpar lista</strong></button>
+    </div>
+    </div>
+    <div class="conteudo">
+        <h3>Itens adicionados:</h3>
         <div id="listaGeral">
-            <ul>
-                <input type="checkbox" name="checkbox" id="checkbox">
-            </ul>
         <ul 
             id="listaProdutos">
         </ul>
