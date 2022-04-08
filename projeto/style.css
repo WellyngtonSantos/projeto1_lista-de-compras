@@ -1,7 +1,9 @@
+/* altera a fonte do documento inteiro */
 * {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* altera cores do texto e adiciona a divisão de cores */
 body {
     color: white;    
     font-size: 1.3rem;
@@ -16,17 +18,21 @@ body {
     rgba(255,255,255,1) 41%,
     rgb(0, 3, 165) 41%);
 }
+
+/* posiciona o header na posição solicitada */
 #header {
     margin: 5px;
     margin-bottom: 25px;
 }
 
+/* ajusta medidas e retira o ponto de cada item na lista */
 #listaProdutos {
     list-style: none;    
     width: 100%;
     max-width: 200px;
 }
 
+/* configura a caixinha de cada item que foi adicionado na lista */
 #listaProdutos li{    
     background-color: #1f1f1f;
     color: white;
@@ -35,6 +41,7 @@ body {
     border-radius: 15px;
 }
 
+/* ajusta tamanho, posição e cores do botão salvar */
 #salvar {
     cursor: pointer;
     width: 120px;
@@ -47,6 +54,7 @@ body {
     margin-left: 30%;
 }
 
+/* ajusta tamanho, posição e cores do botão de limpar a lista toda */
 #deleteAll {
     cursor: pointer;
     width: 140px;
@@ -59,6 +67,7 @@ body {
     margin-left: 25%;
 }
 
+/* ajusta medidas e cores do input de texto */
 #produto {
     height: 35px;
     width: 100%;
@@ -72,6 +81,7 @@ body {
     font-size: 1.3rem;
 }
 
+/* posiciona e ajusta medidas e cores da div principal que recebe os itens da lista */
 .conteudo {
     margin: 50px;
     width: 100%;
@@ -83,15 +93,18 @@ body {
     border-radius: 12px;
 }
 
+/* ajusta posição, tamanho e cores da caixa de inserção de texto */
 #cabecalho {
     padding: 0px;
     width: 50%;
 }
 
+/* define o efeito tachado que é chamado no item da lista, quando o checkbox é marcado  */
 .line-through {
     text-decoration: line-through;
 }
 
+/* posiciona como lado a lado a caixa de input de texto e os botões */
 #corpo {
     display: flex;
 }

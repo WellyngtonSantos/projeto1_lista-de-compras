@@ -10,26 +10,43 @@
     <script src="./script.js" defer></script>
 </head>
 <body>
+    <!-- adiciona título superior -->
     <h1  id="header">Inserir itens na lista:</h1>
+
+
+    <!-- adiciona input de texto e os dois botões (Salvar e Limpar Lista) -->
     <div id="corpo">
-    <div id="cabecalho">
-        
-        <input type="text" id="produto" placeholder="Digite o nome do produto" >
-        
-    </div>    
-    <div class="divInsert">
-        <button onclick="salvarProduto()" id="salvar"><strong>Salvar</strong></button>
+
+        <!-- estiliza e adiciona o input de texto -->
+        <div id="cabecalho">            
+            <input type="text" id="produto" placeholder="Digite o nome do produto" >            
+        </div>
+
+        <!-- estiliza e adiciona o botão de salvar, chamando a função referente -->
+        <div class="divInsert">
+            <button onclick="salvarProduto()" id="salvar"><strong>Salvar</strong></button>
+        </div>
+
+        <!-- estiliza e adiciona o botão de limpar a lista, chamando a função referente -->
+        <div class="header">
+            <button  class="excluir" onclick="apagarLista()" id="deleteAll"><strong>Limpar lista</strong></button>
+        </div>
     </div>
-    <div class="header">
-        <button  class="excluir" onclick="apagarLista()" id="deleteAll"><strong>Limpar lista</strong></button>
-    </div>
-    </div>
+
+
+    <!-- cria toda a caixa que recebe a lista, bem como sua estilização referente -->
     <div class="conteudo">
+
+        <!-- adiciona título superior na lista de itens -->
         <h3>Itens adicionados:</h3>
+
+        <!-- cria div que receberá ul -->
         <div id="listaGeral">
-        <ul 
-            id="listaProdutos">
-        </ul>
+            
+            <!-- cria ul que receberá a lista de itens -->
+            <ul 
+                id="listaProdutos">
+            </ul>
         </div>
     </div>
 </body>
